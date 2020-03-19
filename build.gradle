@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id "io.freefair.aspectj.post-compile-weaving" version "4.1.4"
+}
+
+group 'com.dassuncao.aspect.log.interceptor'
+version '0.1'
+
+sourceCompatibility = JavaVersion.VERSION_11
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    set("aspectjVersion", "1.9.4")
+    set("junitJupiter", "5.4.2")
+    set("lombokVersion", "1.18.12")
+}
+
+dependencies {
+    implementation("org.aspectj:aspectjrt:$aspectjVersion")
+    implementation("org.aspectj:aspectjweaver:$aspectjVersion")
+
+    implementation("org.apache.logging.log4j:log4j-api:2.13.1")
+    implementation("org.apache.logging.log4j:log4j-slf4j-impl:2.13.1")
+
+    runtimeOnly("org.apache.logging.log4j:log4j-core:2.13.1")
+
+    compileOnly("org.projectlombok:lombok:$lombokVersion")
+    annotationProcessor("org.projectlombok:lombok:$lombokVersion")
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiter")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiter")
+}
+
+test {
+    useJUnitPlatform()
+}

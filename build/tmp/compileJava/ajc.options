@@ -1,0 +1,10 @@
+-inpath
+/home/dassuncao/Projects/local/aspect-log-interceptor/build/classes/java/main
+-classpath
+/home/dassuncao/.gradle/caches/modules-2/files-2.1/org.aspectj/aspectjrt/1.9.4/7efb30f3259d13472ee0f92bef4319fda700f522/aspectjrt-1.9.4.jar:/home/dassuncao/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.12/48e4e5d60309ebd833bc528dcf77668eab3cd72c/lombok-1.18.12.jar:/home/dassuncao/.gradle/caches/modules-2/files-2.1/org.aspectj/aspectjweaver/1.9.4/9205229878f3d62fbd3a32a0fb6be2d6ad8589a9/aspectjweaver-1.9.4.jar:/home/dassuncao/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-slf4j-impl/2.13.1/79e92fe5b6c30cc4c8a52893378d4d130e298c65/log4j-slf4j-impl-2.13.1.jar:/home/dassuncao/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-api/2.13.1/cc670f92dc77bbf4540904c3fa211b997cba00d8/log4j-api-2.13.1.jar:/home/dassuncao/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.25/da76ca59f6a57ee3102f8f9bd9cee742973efa8a/slf4j-api-1.7.25.jar
+-d
+/home/dassuncao/Projects/local/aspect-log-interceptor/build/classes/java/main
+-target
+11
+-source
+11
