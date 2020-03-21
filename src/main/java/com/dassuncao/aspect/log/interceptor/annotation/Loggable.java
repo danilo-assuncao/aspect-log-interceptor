@@ -24,6 +24,13 @@ public @interface Loggable {
     boolean logError() default true;
 
     /**
+     * Activates the functionality of logging method result or not.
+     *
+     * @return true if active and false if inactive.
+     */
+    boolean logResult() default true;
+
+    /**
      * Activates the functionality of logging method parameters or not.
      *
      * @return true if active and false if inactive.

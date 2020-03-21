@@ -1,7 +1,0 @@
-<aspectj>
-    <aspects>
-        <aspect name="com.dassuncao.aspect.log.interceptor.aspect.LoggableAspect"/>
-    </aspects>
-    <weaver options="-verbose -Xset:weaveJavaxPackages=true -Xset:weaveJavaPackages=true">
-    </weaver>
-</aspectj>

@@ -10,6 +10,7 @@ public class JoinPointUtils {
 
     /**
      * Gets the name of all parameters of the intercepted method via AspectJ JoinPoint.
+     *
      * @param joinPoint @see {@link JoinPoint}
      * @return Name of the intercepted method parameters
      */
@@ -19,6 +20,7 @@ public class JoinPointUtils {
 
     /**
      * Gets the value of all parameters of the intercepted method via AspectJ JoinPoint.
+     *
      * @param joinPoint @see {@link JoinPoint}
      * @return Value of the intercepted method parameters
      */
@@ -27,11 +29,23 @@ public class JoinPointUtils {
         return methodSignature.getParameterNames();
     }
 
+    /**
+     * Gets the method object of the intercepted method via AspectJ JoinPoint.
+     *
+     * @param joinPoint @see {@link JoinPoint}
+     * @return Value of the intercepted method descriptions
+     */
     public static Method getMethod(final JoinPoint joinPoint) {
         final var methodSignature = (MethodSignature) joinPoint.getSignature();
         return methodSignature.getMethod();
     }
 
+    /**
+     * Gets the parameters array of the intercepted method via AspectJ JoinPoint.
+     *
+     * @param joinPoint @see {@link JoinPoint}
+     * @return Value of the intercepted method parameters
+     */
     public static Parameter[] getParameters(final JoinPoint joinPoint) {
         final var methodSignature = (MethodSignature) joinPoint.getSignature();
         return methodSignature.getMethod().getParameters();

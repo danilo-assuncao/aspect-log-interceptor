@@ -5,8 +5,8 @@ import com.dassuncao.aspect.log.interceptor.annotation.Loggable;
 
 public class MethodSample {
 
-//    @Loggable
-    public String method(@LogParameter final String name, final String lastName) {
+    @Loggable(logError = false)
+    public String method(@LogParameter final String name, @LogParameter final String lastName) {
         return "PARAMETER RECEIVES IS = " + name + " " + lastName;
     }
 }
