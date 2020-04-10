@@ -12,9 +12,12 @@ ext {
     set("aspectjVersion", "1.9.4")
     set("junitJupiter", "5.4.2")
     set("lombokVersion", "1.18.12")
+    set("springContextVersion", "5.2.5.RELEASE")
 }
 
 dependencies {
+    implementation("org.springframework:spring-context:$springContextVersion")
+
     implementation("org.aspectj:aspectjrt:$aspectjVersion")
     implementation("org.aspectj:aspectjweaver:$aspectjVersion")
 
