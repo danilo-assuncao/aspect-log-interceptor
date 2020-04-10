@@ -25,19 +25,15 @@ public class LoggableAspect {
 
     @Before("execution(* *(..)) && @annotation(loggable)")
     public void logParameters(final JoinPoint joinPoint, final Loggable loggable) {
-
         if (isNotActiveLogParameter(loggable)) return;
-
         final var method = JoinPointUtils.getMethod(joinPoint);
         final var parameters = JoinPointUtils.getParameters(joinPoint);
         final var parameterValues = JoinPointUtils.getParameterValues(joinPoint);
         final var parameterNames = JoinPointUtils.getParameterNames(joinPoint);
 
         var stringBuilder = new StringBuilder();
-
         stringBuilder = appendClass(stringBuilder, method);
         stringBuilder = appendMethod(stringBuilder, method);
-
         for (int i = 0; i < parameterNames.length; i++) {
             if (parameters[i].isAnnotationPresent(LogParameter.class)) {
                 stringBuilder = appendParameter(stringBuilder, parameterNames[i], parameterValues[i]);
@@ -49,11 +45,8 @@ public class LoggableAspect {
 
     @AfterReturning(pointcut = "execution(* *(..)) && @annotation(loggable)", returning = "result")
     public void logResult(final JoinPoint joinPoint, final Object result, final Loggable loggable) {
-
         if (isNotActiveLogResult(loggable)) return;
-
         final var method = JoinPointUtils.getMethod(joinPoint);
-
         var stringBuilder = new StringBuilder();
 
         stringBuilder = appendClass(stringBuilder, method);
@@ -65,11 +58,8 @@ public class LoggableAspect {
 
     @AfterThrowing(pointcut = "execution(* *(..)) && @annotation(loggable)", throwing = "exception")
     public void logError(final JoinPoint joinPoint, final Throwable exception, final Loggable loggable) {
-
         if (isNotActiveLogError(loggable)) return;
-
         final var method = JoinPointUtils.getMethod(joinPoint);
-
         var stringBuilder = new StringBuilder();
 
         stringBuilder = appendClass(stringBuilder, method);
