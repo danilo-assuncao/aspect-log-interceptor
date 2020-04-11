@@ -9,6 +9,7 @@ import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 import static com.dassuncao.aspect.log.interceptor.utils.LoggableAnnotationUtils.isNotActiveLogError;
@@ -25,7 +26,11 @@ import static com.dassuncao.aspect.log.interceptor.utils.StringBuilderUtils.appe
 @Component
 public class LoggableAspect {
 
-    @Before("execution(* *(..)) && @annotation(loggable)")
+    @Pointcut("execution(* *(..))")
+    private void loggingTarget() {
+    }
+
+    @Before("loggingTarget() && @annotation(loggable)")
     public void logParameters(final JoinPoint joinPoint, final Loggable loggable) {
         if (isNotActiveLogParameter(loggable)) return;
 
@@ -46,7 +51,7 @@ public class LoggableAspect {
         log.info("{}", stringBuilder.toString().substring(0, stringBuilder.toString().length() - 2));
     }
 
-    @AfterReturning(pointcut = "execution(* *(..)) && @annotation(loggable)", returning = "result")
+    @AfterReturning(pointcut = "loggingTarget() && @annotation(loggable)", returning = "result")
     public void logResult(final JoinPoint joinPoint, final Object result, final Loggable loggable) {
         if (isNotActiveLogResult(loggable)) return;
 
@@ -60,7 +65,7 @@ public class LoggableAspect {
         log.info("{}", stringBuilder.toString());
     }
 
-    @AfterThrowing(pointcut = "execution(* *(..)) && @annotation(loggable)", throwing = "exception")
+    @AfterThrowing(pointcut = "loggingTarget() && @annotation(loggable)", throwing = "exception")
     public void logError(final JoinPoint joinPoint, final Throwable exception, final Loggable loggable) {
         if (isNotActiveLogError(loggable)) return;
 
